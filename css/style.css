@@ -1,0 +1,27 @@
+nav.navigation-bar{
+   background-color: #144;
+   color: #ddd;
+   padding-inline-start: 0.5rem;
+}
+nav.navigation-bar a{
+   text-decoration: none;
+   color: inherit;
+}
+nav.navigation-bar ul{
+   align-items: center;
+}
+nav.navigation-bar li{
+   display: inline-block;
+   height: 2rem;
+   vertical-align: middle;
+   padding-inline-start: 0.5rem;
+   padding-inline-end: 0.5rem;
+   padding-block-start: 0.2rem;
+}
+nav.navigation-bar li:hover{
+   background-color: #255;
+   color: #3ce;
+}
+body{
+   background-color: #e7e7e7;
+}
