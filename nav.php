@@ -7,14 +7,14 @@
 $nav ='
 <nav class="navigation-bar">
    <ul>
-      <a href=""><li>Dashboard</li></a><!---
-      --><a href=""><li>New note</li></a><!---
-   --><a href=""><li>Series</li></a><!---
---><a href=""><li>Categorys</li></a><!---
---><a href=""><li>Tags</li></a><!---
---><a href=""><li>Comments</li></a><!---
---><a href=""><li>Media</li></a><!---
---><a href=""><li>Settings</li></a><!---
+      <a href=""><li>ダッシュボード</li></a><!---
+      --><a href=""><li>新規記事</li></a><!---
+   --><a href=""><li>シリーズ</li></a><!---
+--><a href=""><li>カテゴリー</li></a><!---
+--><a href=""><li>タグ</li></a><!---
+--><a href=""><li>コメント</li></a><!---
+--><a href=""><li>メディア</li></a><!---
+--><a href=""><li>設定</li></a><!---
 -->
    </ul>
 </nav>';
