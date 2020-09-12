@@ -4,14 +4,12 @@
 * 実質的にはトップページ
 */
 
+include 'head.php';
 include 'nav.php';
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-   <link rel="stylesheet" href="./css/style.css" />
-   <link rel="stylesheet" href="./css/reset.css" />
-</head>
+<?php echo $head; ?>
 <body>
    <?php echo $nav; ?>
 </body>
