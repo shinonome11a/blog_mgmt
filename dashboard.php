@@ -4,12 +4,12 @@
 * 実質的にはトップページ
 */
 
-include 'head.php';
-include 'nav.php';
 ?>
 <!DOCTYPE html>
 <html>
-<?php echo $head; ?>
+<head>
+   <?php include 'head.php'; ?>
+</head>
 <body>
-   <?php echo $nav; ?>
+   <?php include 'nav.php'; ?>
 </body>
