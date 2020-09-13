@@ -1,7 +1,9 @@
 nav.navigation-bar{
    background-color: #144;
-   color: #ddd;
    padding-inline-start: 0.5rem;
+   border-block-end: 1px;
+   border-block-end-color: #999;
+   border-block-end-style: solid;
 }
 nav.navigation-bar a{
    text-decoration: none;
@@ -16,12 +18,51 @@ nav.navigation-bar li{
    vertical-align: middle;
    padding-inline-start: 0.5rem;
    padding-inline-end: 0.5rem;
-   padding-block-start: 0.2rem;
+   padding-block-start: 0.25rem;
+   color: #ddd;
 }
 nav.navigation-bar li:hover{
    background-color: #255;
    color: #3ce;
 }
 body{
-   background-color: #e7e7e7;
+   background-color: #efefef;
+   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,"游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+div.main{
+   margin: 0.5rem;
+}
+div.h1_title{
+   font-size: 1.5rem;
+   padding-block-start: 0.1rem;
+   padding-block-end: 0.3rem;
+}
+div.message_box{
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+   background-color: #f0f0f0;
+   margin-block-end: 1.5rem;
+   width: 50%;
+   box-shadow: 0.2rem 0.2rem 0.2rem #e0e0e0;
+   border: 1px;
+   border-color: #e7e7e7;
+   border-style: solid;
+
+}
+div.message_box_title{
+   padding-block-end: 0.1rem;
+   border-block-end: 1px;
+   border-block-end-color: #999;
+   border-block-end-style: solid;
+}
+div.message_box_title h2{
+   font-size: 1rem;
+}
+div.message_box_body{
+   padding: 0.2rem;
+
+}
+div.message_box_body li{
+   list-style: none;
+
 }

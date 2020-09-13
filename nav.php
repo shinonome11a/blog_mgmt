@@ -15,6 +15,7 @@ if ($b === __FILE__) {
 <nav class="navigation-bar">
    <ul>
       <a href=""><li>ダッシュボード</li></a><!---
+      --><a href=""><li>投稿一覧</li></a><!---
       --><a href=""><li>新規記事</li></a><!---
    --><a href=""><li>シリーズ</li></a><!---
 --><a href=""><li>カテゴリー</li></a><!---
@@ -23,5 +24,5 @@ if ($b === __FILE__) {
 --><a href=""><li>メディア</li></a><!---
 --><a href=""><li>設定</li></a><!---
 -->
-   </ul>
+</ul>
 </nav>
