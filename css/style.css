@@ -40,7 +40,7 @@ div.h1_title{
 div.message_box{
    padding: 0.5rem;
    border-radius: 0.5rem;
-   background-color: #f0f0f0;
+   background-color: #f8f8f8;
    margin-block-end: 1.5rem;
    width: 50%;
    box-shadow: 0.2rem 0.2rem 0.2rem #e0e0e0;
@@ -65,4 +65,44 @@ div.message_box_body{
 div.message_box_body li{
    list-style: none;
 
+}
+
+div.new h2{
+   font-size: 1.15rem;
+}
+
+div.input{
+   margin-block-end: 0.5rem;
+   text-align: right;
+}
+div.input#text input{
+   width: 100%;
+   background-color: #fafafa;
+   padding: 0.8rem;
+   border: 3px;
+   border-color: #e7e7e7;
+   border-style: solid;
+   border-radius: 0.3rem;
+}
+div.input#text input:focus{
+   border: 3px;
+   border-color: #255;
+   border-style: solid;
+   border-radius: 0.3rem;
+   outline: 0;
+}
+div.input#button input{
+   background-color: #144;
+   padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+   color: #ddd;
+   border-radius: 0.3rem;
+}
+div.input#button input:hover{
+   background-color: #255;
+   color: #3ce;
+}
+div.input#button input:focus{
+   background-color: #255;
+   color: #ddd;
+   outline: 0;
 }

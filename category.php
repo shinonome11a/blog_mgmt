@@ -1,7 +1,6 @@
 <?php
 /*
-* ダッシュボードページ
-* 実質的にはトップページ
+* カテゴリー新規作成・一覧ページ
 */
 try {
     /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
@@ -39,21 +38,10 @@ try {
 
     /* データベースから値を取ってきたり， データを挿入したりする処理 */
     // 記事数取得
-    $stmt = $pdo->query('select count(note_id) from notes where publish_status<2;'); //公開している記事のみ取得(非公開・論理削除は含まない)
+    $stmt = $pdo->query('select * from categories'); //カテゴリー全件取得
     $rows = $stmt->fetchAll();
-    // var_dump($rows);
-    $notes = $rows[0]['count(note_id)'];
+    var_dump($rows);
 
-    // コメント数取得
-    $stmt = $pdo->query('select count(comment_id) from comments where publish_status<2;');//公開しているコメントのみ取得(非公開・論理削除は含まない)
-    $rows = $stmt->fetchAll();
-    $comments = $rows[0]['count(comment_id)'];
-
-    // 閲覧数取得
-    $stmt = $pdo->query('select sum(view_counter) from note_counter;');
-    $rows = $stmt->fetchAll();
-    $views = $rows[0]['sum(view_counter)'];
-    if ($views === NULL) $views = 0;
 } catch (PDOException $e) {
 
    /* エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
@@ -70,40 +58,23 @@ try {
 <html>
 <head>
    <?php include 'head.php'; ?>
-   <title>Dashboard</title>
+   <title>Category</title>
 </head>
 <body>
    <?php include 'nav.php'; ?>
    <div class="main">
       <div class="h1_title">
-         ダッシュボード
+         カテゴリー
       </div>
-      <div class="message_box" id="overview">
-         <div class="message_box_title">
-            <h2>概要</h2>
-         </div>
-         <div class="message_box_body">
-            <ul>
-               <li>総記事数: <?php echo $notes; ?></li>
-               <li>総コメント数: <?php echo $comments; ?></li>
-               <li>総閲覧数: <?php echo $views; ?></li>
-            </ul>
-         </div>
-      </div>
-      <div class="message_box" id="new_comments">
-         <div class="message_box_title">
-            <h2>最新コメント</h2>
-         </div>
-         <div class="message_box_body">
-            hoge
-         </div>
-      </div>
-      <div class="message_box" id="view">
-         <div class="message_box_title">
-            <h2>最新コメント</h2>
-         </div>
-         <div class="message_box_body">
-            hoge
-         </div>
+      <div class="new" id="new_category">
+         <h2>新規カテゴリー作成</h2>
+         <form action="new_category.php" method="post">
+            <div class="input" id="text">
+               <input type="text" class="text" name="category_name" value="" placeholder="カテゴリー名を入力" required>
+            </div>
+            <div class="input" id="button">
+               <input type="submit" class="button" value="作成">
+            </div>
+         </form>
       </div>
 </body>
