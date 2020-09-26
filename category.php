@@ -77,4 +77,19 @@ try {
             </div>
          </form>
       </div>
+      <div class="list" >
+         <h2>カテゴリー</h2>
+         <div class="table">
+            <div class="table_head">
+               <span class="id">ID</span>
+               <span class="name">名前</span>
+               <span class="number">記事数</span>
+            </div>
+            <div class="table_body">
+               <span class="id">0000</span>
+               <span class="name" title="hogefugaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">hogefugaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
+               <span class="number">0000</span>
+            </div>
+         </div>
+      </div>
    </body>

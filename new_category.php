@@ -7,10 +7,10 @@
 try {
    /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
    /*POSTでない場合は404*/
-   if($_SERVER["REQUEST_METHOD"] != "POST"){
-      header('Content-Type: text/plain; charset=UTF-8', true, 404);
-      die('404 Not found');
-   }
+   // if($_SERVER["REQUEST_METHOD"] != "POST"){
+   //    header('Content-Type: text/plain; charset=UTF-8', true, 404);
+   //    die('404 Not found');
+   // }
 
    // 変数宣言
    $user = ""; // DBアクセスユーザ名
@@ -67,21 +67,3 @@ try {
    <?php include 'head.php'; ?>
    <title>Category</title>
 </head>
-<body>
-   <?php include 'nav.php'; ?>
-   <div class="main">
-      <div class="h1_title">
-         カテゴリー
-      </div>
-      <div class="new" id="new_category">
-         <h2>新規カテゴリー作成</h2>
-         <form action="new_category.php" method="post">
-            <div class="input" id="text">
-               <input type="text" class="text" name="category_name" value="" placeholder="カテゴリー名を入力" required>
-            </div>
-            <div class="input" id="button">
-               <input type="submit" class="button" value="作成">
-            </div>
-         </form>
-      </div>
-   </body>
