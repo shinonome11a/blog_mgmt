@@ -39,13 +39,13 @@ try {
 
    /* データベースから値を取ってきたり， データを挿入したりする処理 */
    // 記事数取得
-   $stmt = $pdo->query('select count(note_id) from notes where publish_status<2;'); //公開している記事のみ取得(非公開・論理削除は含まない)
+   $stmt = $pdo->query('select count(note_id) from notes;'); //公開している記事のみ取得(非公開・論理削除を含まないようにしたい  where publish_status<2)
    $rows = $stmt->fetchAll();
    // var_dump($rows);
    $notes = $rows[0]['count(note_id)'];
 
    // コメント数取得
-   $stmt = $pdo->query('select count(comment_id) from comments where publish_status<2;');//公開しているコメントのみ取得(非公開・論理削除は含まない)
+   $stmt = $pdo->query('select count(comment_id) from comments');//公開しているコメントのみ取得非公開・論理削除を含まないようにしたい  where publish_status<2)
    $rows = $stmt->fetchAll();
    $comments = $rows[0]['count(comment_id)'];
 

@@ -41,13 +41,14 @@ try {
 
    // Table作成(13コ)
    // ここから
-   $stmt = $pdo->query('create table ' . $db_name . '.notes (note_id int unsigned NOT NULL PRIMARY KEY, title text, note longtext, publish_status tinyint unsigned)');
+   $stmt = $pdo->query('create table ' . $db_name . '.notes (note_id int unsigned NOT NULL PRIMARY KEY, title text, note longtext)');
+   $stmt = $pdo->query('create table ' . $db_name . '.notes_metadata (note_id int unsigned NOT NULL PRIMARY KEY, publish_datetime bigint unsigned, update_datetime bigint unsigned, note longtext, publish_status tinyint unsigned)');
    $stmt = $pdo->query('create table ' . $db_name . '.note_log (note_datetime bigint NOT NULL PRIMARY KEY, note_id int unsigned, address tinytext, port smallint unsigned, user_agent longtext, referer longtext)');
    $stmt = $pdo->query('create table ' . $db_name . '.note_counter (note_id int unsigned NOT NULL PRIMARY KEY, view_counter int unsigned, good_counter int unsigned, bad_counter int unsigned)');
 
-   $stmt = $pdo->query('create table ' . $db_name . '.comments (comment_id int unsigned NOT NULL PRIMARY KEY, comment longtext, contributor_name longtext, contributor_email longtext, note_id int unsigned, publish_status tinyint unsigned)');
-   $stmt = $pdo->query('create table ' . $db_name . '.comment_log (comment_datetime bigint NOT NULL PRIMARY KEY, comment_id int unsigned, address tinytext, port smallint unsigned, user_agent longtext)');
-   $stmt = $pdo->query('create table ' . $db_name . '.comment_counter (comment_id int unsigned NOT NULL PRIMARY KEY, good_counter int unsigned, bad_counter int unsigned)');
+   $stmt = $pdo->query('create table ' . $db_name . '.comments (comment_id bigint unsigned NOT NULL PRIMARY KEY, comment longtext)');
+   $stmt = $pdo->query('create table ' . $db_name . '.comment_metadata (comment_id bigint unsigned NOT NULL PRIMARY KEY, address tinytext, port smallint unsigned, user_agent longtext, contributor_name longtext, contributor_email longtext, note_id int unsigned, publish_datetime bigint unsigned, update_datetime bigint unsigned, publish_status tinyint unsigned)');
+   $stmt = $pdo->query('create table ' . $db_name . '.comment_counter (comment_id bigint unsigned NOT NULL PRIMARY KEY, good_counter int unsigned, bad_counter int unsigned)');
 
    $stmt = $pdo->query('create table ' . $db_name . '.categories (category_id int unsigned NOT NULL PRIMARY KEY, category_name text)');
    $stmt = $pdo->query('create table ' . $db_name . '.category_entry (entry_id int unsigned NOT NULL PRIMARY KEY, category_id int unsigned, note_id int unsigned)');
@@ -58,7 +59,7 @@ try {
    $stmt = $pdo->query('create table ' . $db_name . '.series (series_id int unsigned NOT NULL PRIMARY KEY, series_name text)');
    $stmt = $pdo->query('create table ' . $db_name . '.series_entry (entry_id int unsigned NOT NULL PRIMARY KEY, series_id int unsigned, note_id int unsigned, number int unsigned)');
 
-   $stmt = $pdo->query('create table ' . $db_name . '.media (media_id int unsigned NOT NULL PRIMARY KEY, mime_type text, media_discription longtext, upload_datetime datetime)');
+   $stmt = $pdo->query('create table ' . $db_name . '.media (media_id int unsigned NOT NULL PRIMARY KEY, mime_type text, media_discription longtext, upload_datetime bigint)');
    // ここまで
 
    // 作成したテーブル一覧表示
