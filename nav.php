@@ -16,7 +16,7 @@ if ($b === __FILE__) {
    <ul>
       <a href="dashboard.php"><li>ダッシュボード</li></a>
       <a href=""><li>投稿一覧</li></a>
-      <a href=""><li>新規記事</li></a>
+      <a href=""><li>新規投稿</li></a>
       <a href=""><li>シリーズ</li></a>
       <a href="category.php"><li>カテゴリー</li></a>
       <a href=""><li>タグ</li></a>
