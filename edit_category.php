@@ -56,6 +56,9 @@ try {
    // カテゴリ編集本番
    switch ($_GET["method"]) {
       case 'insert': // 新規追加
+      if (empty($_GET['category_name'])) {
+         return;
+      }
       $query = "INSERT INTO `categories` (`category_id`, `category_name`) VALUES (:id, :name)";
       $sth = $pdo -> prepare($query); // この一連、SQLインジェクション対策
       $sth -> bindValue(':id', $category_id_last + 1);
@@ -71,6 +74,9 @@ try {
       break;
 
       case 'update': // 名前変更
+      if (empty($_GET['category_name'])) {
+         return;
+      }
       $query = "UPDATE `categories` SET `category_name` = :name WHERE `categories`.`category_id` = :id";
       $sth = $pdo -> prepare($query); // この一連、SQLインジェクション対策
       $sth -> bindValue(':id', $_GET['category_id']);
