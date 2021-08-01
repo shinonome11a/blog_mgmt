@@ -5,6 +5,8 @@
 
 
 try {
+   header('Content-Type: text/plain; charset=UTF-8');
+   header('Location: category.php');
    /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
    /*POSTでない場合は404*/
    // if($_SERVER["REQUEST_METHOD"] != "POST"){
@@ -44,10 +46,38 @@ try {
    );
 
    /* データベースから値を取ってきたり， データを挿入したりする処理 */
-   // 記事数取得
-   $stmt = $pdo->query('select * from categories'); //カテゴリー全件取得
-   $rows = $stmt->fetchAll();
+   // カテゴリIDの最大値を取得
+   $stmt = $pdo->query('SELECT category_id FROM `categories` ORDER BY category_id DESC LIMIT 1'); //カテゴリー全件取得
+   $rows = $stmt->fetchAll(PDO::FETCH_COLUMN);
    var_dump($rows);
+   $category_id_last = $rows[0];
+   echo $category_id_last; // $category_id_last: 取得したカテゴリIDの最大値
+
+   // カテゴリ編集本番
+   switch ($_GET["method"]) {
+      case 'insert': // 新規追加
+      $query = "INSERT INTO `categories` (`category_id`, `category_name`) VALUES (:id, :name)";
+      $sth = $pdo -> prepare($query); // この一連、SQLインジェクション対策
+      $sth -> bindValue(':id', $category_id_last + 1);
+      $sth -> bindValue(':name', $_GET['category_name']);
+      $sth -> execute();
+      break;
+
+      case 'delete': // 削除
+      $query = "DELETE FROM `categories` WHERE `categories`.`category_id` = :id;";
+      $sth = $pdo -> prepare($query); // この一連、SQLインジェクション対策
+      $sth -> bindValue(':id', $_GET['category_id']);
+      $sth -> execute();
+      break;
+
+      case 'update': // 名前変更
+      $query = "UPDATE `categories` SET `category_name` = :name WHERE `categories`.`category_id` = :id";
+      $sth = $pdo -> prepare($query); // この一連、SQLインジェクション対策
+      $sth -> bindValue(':id', $_GET['category_id']);
+      $sth -> bindValue(':name', $_GET['category_name']);
+      $sth -> execute();
+      break;
+   }
 
 } catch (PDOException $e) {
 
@@ -61,9 +91,3 @@ try {
 }
 /*以下本文*/
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-   <?php include 'head.php'; ?>
-   <title>Category</title>
-</head>

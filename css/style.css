@@ -1,3 +1,4 @@
+/* ナビゲーションバー */
 nav.navigation-bar{
    background-color: #144;
    padding-inline-start: 0.5rem;
@@ -27,6 +28,7 @@ nav.navigation-bar li:hover{
    background-color: #255;
    color: #3ce;
 }
+/* 本文全体 */
 body{
    /* min-width: 350px; */
    background-color: #efefef;
@@ -40,6 +42,8 @@ div.h1_title{
    padding-block-start: 0.1rem;
    padding-block-end: 0.3rem;
 }
+
+/* メッセージボックス */
 div.message_box{
    padding: 0.5rem;
    border-radius: 0.5rem;
@@ -70,6 +74,7 @@ div.message_box_body li{
 
 }
 
+/* 入力欄 */
 div.new h2{
    font-size: 1.15rem;
 }
@@ -110,6 +115,7 @@ div.input#button input:focus{
    outline: 0;
 }
 
+/* 一覧表 */
 div.list h2{
    font-size: 1.15rem;
 }
@@ -120,25 +126,33 @@ div.table_head, div.table_body{
    border-style: solid; */
    white-space: nowrap;
 	letter-spacing: -.5em;
-}div.table_head span, div.table_body span{
+   display: block;
+}
+div.table_head span, div.table_body span{
    padding: 0.3rem;
    display: inline-flex;
    letter-spacing: 0;
    overflow: hidden;
+   height: 2rem;
+   line-height: 1.5rem;
 }
 div.table_head{
-   background-color: #255;
+   background-color: #144;
    color: #ddd;
 }
 div.table_body{
    background-color: #f8f8f8;
    /* color: #ddd; */
+   border: 0px;
+   border-block-start: 1px;
+   border-color: #999;
+   border-style: solid;
 }
-span.id{
+div.table span.id{
    width: 10%;
    min-width: 3rem;
 }
-span.name{
+div.table span.name{
    border: 0px;
    border-inline-start: 1px;
    border-color: #999;
@@ -146,11 +160,60 @@ span.name{
    width: 50%;
    min-width: 10rem;
 }
-span.number{
+div.table span.number{
    border: 0px;
    border-inline-start: 1px;
    border-color: #999;
    border-style: solid;
-   width: 10%;
-   min-width: 4rem;
+   width: 20%;
+   min-width: 2rem;
+}
+div.table span.edit{
+   border: 0px;
+   border-inline-start: 1px;
+   border-color: #999;
+   border-style: solid;
+   width: 20%;
+   min-width: 8rem;
+}
+div.table span.edit a{
+   padding-inline: 0.2rem;
+   font-size: 0.8rem;
+}
+div.table_body input.text{
+   width: 79%;
+   background-color: #fafafa;
+   padding: 0.3rem;
+   border: 3px;
+   border-color: #e7e7e7;
+   border-style: solid;
+   border-radius: 0.3rem;
+   margin: 0.3rem;
+}
+div.table_body input.text:focus{
+   border: 3px;
+   border-color: #255;
+   border-style: solid;
+   border-radius: 0.3rem;
+   outline: 0;
+}
+div.table_body input.button{
+   background-color: #144;
+   padding: 0.2rem 1.5rem 0.2rem 1.5rem;
+   color: #ddd;
+   border-radius: 0.3rem;
+}
+div.table_body input.button:hover{
+   background-color: #255;
+   color: #3ce;
+}
+div.table_body input.button:focus{
+   background-color: #255;
+   color: #ddd;
+   outline: 0;
+}
+
+div.table_body_hidden{
+   display: none;
+
 }

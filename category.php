@@ -37,10 +37,34 @@ try {
    );
 
    /* データベースから値を取ってきたり， データを挿入したりする処理 */
-   // 記事数取得
-   $stmt = $pdo->query('select * from categories'); //カテゴリー全件取得
+   //カテゴリー全件取得 記事数の計算は後でやる
+   $stmt = $pdo->query('select * from categories');
    $rows = $stmt->fetchAll();
-   var_dump($rows);
+   // var_dump($rows);
+
+   /* 取得したデータから出力用のhtmlを生成する処理 */
+   $table_body = "";
+   foreach ($rows as $key => $value) {
+      $table_body .= '
+         <div class="table_body">
+            <span class="id">'. $value['category_id'] .'</span>
+            <span class="name" title="'. $value['category_name'] .'">'. $value['category_name'] .'</span>
+            <span class="number"><p>comming soon</p></span>
+            <span class="edit">
+               <a href="javascript:void(0)" onClick="open_editline(\'table_body_'. $value['category_id'] .'\');return false;" id="openclose_editline">編集</a>
+               <a href="edit_category.php?method=delete&category_id='. $value['category_id'] .'"onclick="return check_delete()">削除</a>
+            </span>
+         </div>
+         <div class="table_body table_body_hidden" id="table_body_'. $value['category_id'] .'" style="">
+               <form action="edit_category.php" method="get" onsubmit="return check_edit()">
+                  <input type="text" class="text" name="category_name" value="'. $value['category_name'] .'" required>
+                  <input type="submit" class="button" value="更新">
+                  <input type="hidden" name="method" value="update">
+                  <input type="hidden" name="category_id" value="'. $value['category_id'] .'">
+               </form>
+         </div>
+         ';
+   }
 
 } catch (PDOException $e) {
 
@@ -68,13 +92,14 @@ try {
       </div>
       <div class="new" id="new_category">
          <h2>新規カテゴリー作成</h2>
-         <form action="new_category.php" method="post">
+         <form action="edit_category.php" method="get" onsubmit="return check_insert()">
             <div class="input" id="text">
                <input type="text" class="text" name="category_name" value="" placeholder="カテゴリー名を入力" required>
             </div>
             <div class="input" id="button">
                <input type="submit" class="button" value="作成">
             </div>
+            <input type="hidden" name="method" value="insert">
          </form>
       </div>
       <div class="list" >
@@ -84,12 +109,9 @@ try {
                <span class="id">ID</span>
                <span class="name">名前</span>
                <span class="number">記事数</span>
+               <span class="edit">操作</span>
             </div>
-            <div class="table_body">
-               <span class="id">0000</span>
-               <span class="name" title="hogefugaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">hogefugaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
-               <span class="number">0000</span>
-            </div>
+            <?php echo $table_body ?>
          </div>
       </div>
    </body>
