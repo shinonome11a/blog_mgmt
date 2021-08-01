@@ -42,7 +42,7 @@ try {
    // Table作成(13コ)
    // ここから
    $stmt = $pdo->query('create table ' . $db_name . '.notes (note_id int unsigned NOT NULL PRIMARY KEY, title text, note longtext)');
-   $stmt = $pdo->query('create table ' . $db_name . '.notes_metadata (note_id int unsigned NOT NULL PRIMARY KEY, publish_datetime bigint unsigned, update_datetime bigint unsigned, note longtext, publish_status tinyint unsigned)');
+   $stmt = $pdo->query('create table ' . $db_name . '.notes_metadata (note_id int unsigned NOT NULL PRIMARY KEY, publish_datetime bigint unsigned, update_datetime bigint unsigned, publish_status tinyint unsigned)');
    $stmt = $pdo->query('create table ' . $db_name . '.note_log (note_datetime bigint NOT NULL PRIMARY KEY, note_id int unsigned, address tinytext, port smallint unsigned, user_agent longtext, referer longtext)');
    $stmt = $pdo->query('create table ' . $db_name . '.note_counter (note_id int unsigned NOT NULL PRIMARY KEY, view_counter int unsigned, good_counter int unsigned, bad_counter int unsigned)');
 
