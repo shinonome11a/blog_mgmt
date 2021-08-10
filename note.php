@@ -5,7 +5,6 @@
    try {
       /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
       
-      
       // 変数宣言
       $user = ""; // DBアクセスユーザ名
       $pass = ""; // DBアクセスパスワード
@@ -25,7 +24,7 @@
          $host = $array['host'];
          $db_name = $array['db_name'];
       }
-      
+
       // データベースに接続
       $pdo = new PDO(
          'mysql:dbname=' . $db_name . ';host=' . $host . ';charset=utf8mb4',
@@ -36,13 +35,13 @@
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
          ]
       );
-      
+
       /* データベースから値を取ってきたり， データを挿入したりする処理 */
       //記事全件取得 メタデータ込み
       $stmt = $pdo->query('SELECT `notes`.`note_id` AS `id`,`title`,`title`,`publish_datetime`,`update_datetime`,`publish_status` FROM `notes` LEFT OUTER JOIN `notes_metadata` ON notes.note_id = notes_metadata.note_id');
       $rows = $stmt->fetchAll();
       var_dump($rows);
-      
+
       /* 取得したデータから出力用のhtmlを生成する処理 */
       foreach ($rows as $key => $value) {
          $publish_status = "";
@@ -59,7 +58,7 @@
             case 3:
                $publish_status = "論理削除";
                break;
-            
+
             default:
                $publish_status = "取得失敗";
                break;
@@ -76,18 +75,20 @@
          </div>
          ';
       }
-      
+
    } catch (PDOException $e) {
-      
+
       /* エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
       * - もし手抜きしたくない場合は普通にHTMLの表示を継続する
       * - ここではエラー内容を表示しているが， 実際の商用環境ではログファイルに記録して， Webブラウザには出さないほうが望ましい
       */
       header('Content-Type: text/plain; charset=UTF-8', true, 500);
       exit($e->getMessage());
-      
+
    }
    /*以下本文*/
+   
+   
 ?>
 <!DOCTYPE html>
 <html lang="ja">
