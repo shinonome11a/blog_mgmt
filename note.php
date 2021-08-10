@@ -112,13 +112,6 @@
             <span class="status">公開状態</span>
             <span class="edit">操作</span>
          </div>
-         <div class="table_head">
-            <span class="id">ID</span>
-            <span class="name">記事名</span>
-            <span class="number">コメント数</span>
-            <span class="status">公開状態</span>
-            <span class="edit">操作</span>
-         </div>
          <?php echo $table_body ?>
       </div>
    </div>
