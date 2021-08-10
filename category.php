@@ -2,9 +2,10 @@
    /*
    * カテゴリー新規作成・一覧ページ
    */
+   
    try {
       /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
-      
+
       // 変数宣言
       $user = ""; // DBアクセスユーザ名
       $pass = ""; // DBアクセスパスワード
@@ -24,7 +25,7 @@
          $host = $array['host'];
          $db_name = $array['db_name'];
       }
-      
+
       // データベースに接続
       $pdo = new PDO(
          'mysql:dbname=' . $db_name . ';host=' . $host . ';charset=utf8mb4',
@@ -35,13 +36,13 @@
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
          ]
       );
-      
+
       /* データベースから値を取ってきたり， データを挿入したりする処理 */
       //カテゴリー全件取得 記事数の計算は後でやる
       $stmt = $pdo->query('select * from categories');
       $rows = $stmt->fetchAll();
       // var_dump($rows);
-      
+
       /* 取得したデータから出力用のhtmlを生成する処理 */
       $table_body = "";
       foreach ($rows as $key => $value) {
@@ -65,16 +66,16 @@
          </div>
          ';
       }
-      
+
    } catch (PDOException $e) {
-      
+
       /* エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
       * - もし手抜きしたくない場合は普通にHTMLの表示を継続する
       * - ここではエラー内容を表示しているが， 実際の商用環境ではログファイルに記録して， Webブラウザには出さないほうが望ましい
       */
       header('Content-Type: text/plain; charset=UTF-8', true, 500);
       exit($e->getMessage());
-      
+
    }
    /*以下本文*/
 ?>
