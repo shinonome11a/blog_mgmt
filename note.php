@@ -4,7 +4,7 @@
    */
    try {
       /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
-      
+
       // 変数宣言
       $user = ""; // DBアクセスユーザ名
       $pass = ""; // DBアクセスパスワード
@@ -43,6 +43,7 @@
       var_dump($rows);
 
       /* 取得したデータから出力用のhtmlを生成する処理 */
+      $table_body = "";
       foreach ($rows as $key => $value) {
          $publish_status = "";
          switch ($value['publish_status']) {
@@ -87,8 +88,8 @@
 
    }
    /*以下本文*/
-   
-   
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
