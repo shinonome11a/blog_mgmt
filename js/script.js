@@ -14,24 +14,24 @@ function check_edit(){
       return true; // 「OK」時は送信を実行
    }
    else{ // 「キャンセル」時の処理
-      return false; // 送信を中止
+         return false; // 送信を中止
+      }
    }
-}
-// 削除
-function check_delete(type, value){
-   if(window.confirm('削除します。よろしいですか？')){ // 確認ダイアログを表示
-      return true; // 「OK」時は送信を実行
+   // 削除
+   function check_delete(type, value){
+      if(window.confirm('削除します。よろしいですか？')){ // 確認ダイアログを表示
+         return true; // 「OK」時は送信を実行
+      }
+      else{ // 「キャンセル」時の処理
+         return false; // 送信を中止
+      }
    }
-   else{ // 「キャンセル」時の処理
-      return false; // 送信を中止
-   }
-}
 
-/*編集メニュー開け閉じ*/
-function open_editline(id){
-   const p1 = document.getElementById(id);
-   if(p1.style.display=="block"){
-      // noneで非表示
+   /*編集メニュー開け閉じ*/
+   function open_editline(id){
+      const p1 = document.getElementById(id);
+      if(p1.style.display=="block"){
+         // noneで非表示
       p1.style.display ="none";
    }else{
       // blockで表示
