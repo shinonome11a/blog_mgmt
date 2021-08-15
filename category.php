@@ -53,11 +53,11 @@
             <span class="number"><p>comming soon</p></span>
             <span class="edit">
                <a href="javascript:void(0)" onClick="open_editline(\'table_body_' . $value['category_id'] . '\');return false;" id="openclose_editline">編集</a>
-               <a href="edit_category.php?method=delete&category_id=' . $value['category_id'] . '"onclick="return check_delete()">削除</a>
+               <a href="process_category.php?method=delete&category_id=' . $value['category_id'] . '"onclick="return check_delete()">削除</a>
             </span>
          </div>
          <div class="table_body table_body_hidden" id="table_body_' . $value['category_id'] . '" style="">
-               <form action="edit_category.php" method="get" onsubmit="return check_edit()">
+               <form action="process_category.php" method="get" onsubmit="return check_edit()">
                   <input type="text" class="text" name="category_name" value="' . $value['category_name'] . '" required>
                   <input type="submit" class="button" value="更新">
                   <input type="hidden" name="method" value="update">
@@ -93,7 +93,7 @@
    </div>
    <div class="new" id="new_category">
       <h2>新規カテゴリー作成</h2>
-      <form action="edit_category.php" method="get" onsubmit="return check_insert()">
+      <form action="process_category.php" method="get" onsubmit="return check_insert()">
          <div class="input" id="text">
             <input type="text" class="text" name="category_name" value="" placeholder="カテゴリー名を入力" required>
          </div>
